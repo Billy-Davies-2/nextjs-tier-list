@@ -1,9 +1,7 @@
 const TIERS = ['S', 'A', 'B', 'C', 'D'] as const
 import { getItemsGrouped, listUsers } from '@/lib/db'
 import type { Grouped } from '@/lib/types'
-import TierListClient from './tierlist.client'
 import TierListShell from './tierlist.shell.client'
-import UserSelector from './user-selector.client'
 
 export default async function TierList({ searchParams }: { searchParams?: { user?: string } }) {
   const users = listUsers()
