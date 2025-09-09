@@ -1,13 +1,11 @@
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
-import { TierList } from '@/components/tierlist'
+import TierList from '@/components/tierlist'
 
-const inter = Inter({ subsets: ['latin'] })
+export const dynamic = 'force-dynamic'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <TierList></TierList>
+    <main className="min-h-screen w-full flex justify-center items-start p-4 md:p-6 lg:p-8">
+      <TierList />
     </main>
   )
 }

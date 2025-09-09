@@ -2,21 +2,45 @@
   "name": "nextjs-tier-list",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "bun@1.2.21",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+  "lint": "next lint",
+  "seed": "bun scripts/seed.ts",
+  "test": "bun test"
+  },
+  "postcss": {
+    "plugins": {
+      "@tailwindcss/postcss": {}
+    }
+  },
+  "tailwind": {
+    "content": [
+      "./app/**/*.{js,ts,jsx,tsx}",
+      "./components/**/*.{js,ts,jsx,tsx}"
+    ]
   },
   "dependencies": {
-    "@types/node": "18.15.5",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "eslint": "8.36.0",
-    "eslint-config-next": "13.2.4",
-    "next": "13.2.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.0.2"
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+  "@tanstack/react-query": "^5.56.2",
+  "@trpc/client": "^11.0.0-rc.620",
+  "@trpc/react-query": "^11.0.0-rc.620",
+  "@trpc/server": "^11.0.0-rc.620",
+  "zod": "^3.23.8",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "bun-types": "^1.2.21",
+    "tailwindcss": "^4.1.0"
   }
 }

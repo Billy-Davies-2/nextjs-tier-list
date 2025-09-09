@@ -1,0 +1,9 @@
+.tierlist{display:grid;gap:8px;width:100%;max-width:900px}
+.tierRow{display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:stretch}
+.tierLabel{display:flex;align-items:center;justify-content:center;font-weight:700;border-radius:6px;color:#fff}
+.tierItems{min-height:64px;border-radius:6px;background:var(--tier-bg,#111);border:1px solid #333}
+.tierS{background:#ef4444}
+.tierA{background:#f59e0b}
+.tierB{background:#10b981}
+.tierC{background:#3b82f6}
+.tierD{background:#8b5cf6}
