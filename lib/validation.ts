@@ -38,14 +38,23 @@ export const dateRangeSchema = z.object({
 /**
  * Helper function to safely parse and validate input
  * Returns either the validated data or throws a descriptive error
+ * @param schema - The Zod schema to validate against
+ * @param input - The input data to validate
+ * @param isClientFacing - If true, returns generic error messages (default: true)
  */
 export function validateInput<T>(
   schema: z.ZodSchema<T>,
-  input: unknown
+  input: unknown,
+  isClientFacing: boolean = true
 ): T {
   const result = schema.safeParse(input)
   
   if (!result.success) {
+    if (isClientFacing) {
+      // Generic error for client-facing responses
+      throw new Error('Invalid input provided')
+    }
+    // Detailed error for server-side logging
     const errors = result.error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ')
     throw new Error(`Validation failed: ${errors}`)
   }
@@ -55,14 +64,23 @@ export function validateInput<T>(
 
 /**
  * Helper function for async validation (useful for database checks)
+ * @param schema - The Zod schema to validate against
+ * @param input - The input data to validate
+ * @param isClientFacing - If true, returns generic error messages (default: true)
  */
 export async function validateInputAsync<T>(
   schema: z.ZodSchema<T>,
-  input: unknown
+  input: unknown,
+  isClientFacing: boolean = true
 ): Promise<T> {
   const result = await schema.safeParseAsync(input)
   
   if (!result.success) {
+    if (isClientFacing) {
+      // Generic error for client-facing responses
+      throw new Error('Invalid input provided')
+    }
+    // Detailed error for server-side logging
     const errors = result.error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ')
     throw new Error(`Validation failed: ${errors}`)
   }
