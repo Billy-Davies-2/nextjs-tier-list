@@ -41,6 +41,21 @@ export const dateRangeSchema = z.object({
  * @param schema - The Zod schema to validate against
  * @param input - The input data to validate
  * @param isClientFacing - If true, returns generic error messages (default: true)
+ * 
+ * Usage:
+ * - For client-facing APIs: validateInput(schema, input, true)
+ * - For server-side/internal use: validateInput(schema, input, false)
+ * 
+ * Note: When using isClientFacing=true, consider logging the detailed error
+ * server-side for debugging and security auditing:
+ * 
+ * try {
+ *   return validateInput(schema, input, true)
+ * } catch (error) {
+ *   // Log detailed error server-side
+ *   console.error('Validation error:', schema.safeParse(input).error)
+ *   throw error // Generic message to client
+ * }
  */
 export function validateInput<T>(
   schema: z.ZodSchema<T>,

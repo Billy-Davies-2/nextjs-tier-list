@@ -31,3 +31,9 @@ jobs:
 
     - name: Check for outdated dependencies
       run: bun outdated || true
+      
+    - name: Create audit summary
+      if: failure()
+      run: |
+        echo "::warning::Security vulnerabilities detected. Please review and update dependencies."
+        echo "Run 'bun audit' locally for details."
