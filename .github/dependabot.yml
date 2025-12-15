@@ -11,7 +11,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
-
+  
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
